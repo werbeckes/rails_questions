@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   def home
+    @questions = current_user.questions.order(:created_at)
   end
 
   def new
