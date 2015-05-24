@@ -1,0 +1,17 @@
+<h1>Edit Question</h1>
+
+<%= form_for :question, url: "/users/#{current_user.id}/questions/#{@question.id}", method: 'put' do |f| %>
+  <p>
+    <%= f.label "What should we ask you?" %>
+    <%= f.text_field :text %>
+  </p>
+  <p>
+    <%= f.label "What type of answer?" %>
+    <%= f.select :answer_type, [['Numeric','number_field'],['A few words','text_field'],['A lot of words','text_area']] %>
+  </p>
+  <p>
+    <%= f.submit value = "Update question" %>
+  </p>
+<% end %>
+
+<%= button_to "Cancel", user_question_path(current_user, @question), method: 'get' %>

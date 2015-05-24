@@ -1,0 +1,20 @@
+<h4>Question Detail page: </h4>
+
+<h1><%= @question.text %></h1>
+<p>
+  <%= button_to "Edit", edit_user_question_path(current_user, @question), method: 'get' %>
+</p>
+
+<h3>Recent Answers</h3>
+
+<% if @answers.length > 0 %>
+  <table class="table">
+    <th>Date</th>
+    <th>Value</th>
+      <%= render @answers %>
+  </table>
+<% else %>
+  <h5>You've never answered this question!</h5>
+<% end %>
+
+<%= button_to "Back", home_path, method: 'get' %>
