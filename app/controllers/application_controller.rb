@@ -9,8 +9,9 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def logged_in?
-    !!session[:user_id]
+    session[:user_id] && session[:expires_on] > Time.now
   end
+  helper_method :logged_in?
 
   def authenticate
     redirect_to login_path unless logged_in?

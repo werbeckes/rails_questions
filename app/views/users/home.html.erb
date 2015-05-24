@@ -9,3 +9,5 @@
 <br>
 
 <%= button_to "Add a new question", new_user_question_path(current_user), method: 'get' %>
+
+<%= link_to "send reminder email now", send_reminder_path(current_user) %>
