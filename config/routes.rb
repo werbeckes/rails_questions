@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   delete '/logout' => 'sessions#destroy', as: :logout
 
   get '/home' => 'users#home', as: :home
+  get '/reminder' => 'users#send_reminder', as: :send_reminder
 
   resources :users, only: [:new, :create] do
     resources :questions, only: [:new, :create, :show, :edit, :update]

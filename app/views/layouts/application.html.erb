@@ -8,9 +8,11 @@
 </head>
 <body>
 
-<div class="container">
-  <%= yield %>
-</div>
+  <%= render partial: 'navbar', layout: false %>
+
+  <div class="container">
+    <%= yield %>
+  </div>
 
 </body>
 </html>
