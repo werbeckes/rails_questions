@@ -5,4 +5,7 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
+  accepts_nested_attributes_for :questions
+  accepts_nested_attributes_for :answers
+
 end

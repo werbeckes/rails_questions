@@ -1,3 +1,12 @@
 <h1>Daily Answers</h1>
 
-<
+<form action= <%="/users/#{session[:user_id]}/add_answers"%> method='post'>
+  <input type="hidden" name= <%=request_forgery_protection_token.to_s%> value= <%=form_authenticity_token%> >
+  <% @questions.each do |question| %>
+    <%= render partial: 'questions/answer_field', locals: {question: question} %>
+  <% end %>
+  <input type="submit" value="Submit Answers">
+</form>
+
+<!-- Answer for:
+date_select('answer','answer_for') -->
