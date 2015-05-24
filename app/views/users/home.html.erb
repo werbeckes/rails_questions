@@ -1,7 +1,11 @@
 <h1>This is your home page</h1>
 
-<%= button_to "Submit answers", new_answers_path %>
+<%= button_to "Submit answers", answer_user_path(current_user), method: 'get' %>
 
-<%= render @questions %>
+<br>
+<div id="question list">
+  <%= render @questions %>
+</div>
+<br>
 
-<%= button_to "Add a new question", answer_user_path %>
+<%= button_to "Add a new question", new_user_question_path(current_user), method: 'get' %>

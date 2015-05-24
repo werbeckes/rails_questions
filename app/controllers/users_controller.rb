@@ -19,6 +19,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def answer
+    @questions = current_user.questions.order(:created_at)
+  end
+
   private
     def user_params
       params.require(:user).permit(:username, :password, :email, :cell)

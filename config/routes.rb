@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get '/home' => 'users#home', as: :home
 
   resources :users, only: [:new, :create] do
-    resources :questions, only: [:new, :create, :edit, :update]
+    resources :questions, only: [:new, :create, :show, :edit, :update]
     member do
       get 'answer'
       post 'add_answers'

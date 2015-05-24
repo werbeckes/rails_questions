@@ -1,0 +1,13 @@
+<%= form_for :question, url: "/users/#{current_user.id}/questions" do |f| %>
+  <p>
+    <%= f.label "What should we ask you?" %>
+    <%= f.text_field :text %>
+  </p>
+  <p>
+    <%= f.label "What type of answer?" %>
+    <%= f.select :answer_type, [['Numeric','number_field'],['A few words','text_field'],['A lot of words','text_area']] %>
+  </p>
+  <p>
+    <%= f.submit value = "Add new daily question" %>
+  </p>
+<% end %>
