@@ -4,4 +4,5 @@ class User < ActiveRecord::Base
   has_many :answers, through: :questions
 
   has_secure_password
+
 end
