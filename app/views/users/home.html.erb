@@ -1,10 +1,12 @@
-<h1>This is your home page</h1>
-
 <%= button_to "Submit answers", answer_user_path(current_user), method: 'get' %>
+<%= link_to "Edit preferences", edit_user_path(current_user) %><br>
 
 <br>
 <div id="question list">
-  <%= render @questions %>
+  <h3>Your set of daily questions</h3>
+  <ul>
+    <%= render @questions %>
+  </ul>
 </div>
 <br>
 

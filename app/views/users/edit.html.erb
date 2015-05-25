@@ -1,0 +1,18 @@
+<h1>Edit Reminder Preferences</h1>
+
+<%= form_for :user, url: "/users/#{current_user.id}", method: 'put' do |f| %>
+  <p>
+    <%= f.label "What time should we email you?" %>
+    <%= f.time_select(:send_time, {ampm: true, minute_step: 10}) %>
+  </p>
+  <p>
+    <% @days_of_week.each do |day| %>
+      <%= f.check_box day %>
+      <%= f.label day %><br>
+    <% end %>
+  </p>
+  <p>
+    <%= f.submit value = "update preferences" %>
+  </p>
+<% end %>
+

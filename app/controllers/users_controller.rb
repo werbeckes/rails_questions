@@ -9,10 +9,16 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def edit
+    @time = current_user.send_time
+    @days_of_week = [:sunday,:monday,:tuesday,:wednesday,:thursday,:friday,:saturday]
+  end
+
   def create
     @user = User.new(user_params)
 
     if @user.save
+      @user.set_defaults
       session[:user_id] = @user.id
 
       params[:user][:remember_me] ? exp = Time.now + 1.year : exp = Time.now + 1.hours
@@ -25,8 +31,19 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    p user_update_params
+    if current_user.update(user_update_params)
+      redirect_to home_path
+    else
+      #TODO catch errors
+      @days_of_week = [:sunday,:monday,:tuesday,:wednesday,:thursday,:friday,:saturday]
+      render 'edit'
+    end
+  end
+
   def answer
-    @questions = current_user.questions.order(:answer_for)
+    @questions = current_user.questions.order(:created_at)
   end
 
   def add_answers
@@ -53,6 +70,10 @@ class UsersController < ApplicationController
   private
     def user_params
       params.require(:user).permit(:username, :email, :cell, :password, :password_confirmation)
+    end
+
+    def user_update_params
+      params.require(:user).permit(:send_time,:monday,:tuesday,:wednesday,:thursday,:friday,:saturday,:sunday)
     end
 
     def find_answer_for_date(date_hash)
